@@ -1,0 +1,49 @@
+<%- include("partials/header")%>
+    <script>
+        $(document).ready(function() {
+            showTable();
+            addNewGrade();
+            removeButton();
+        })
+    </script>
+    <form method="POST" action="/addGrades">
+        <div class="container">
+            <h3 style="text-align: center;">
+                Add New Grades
+                <small class="text-muted"> - Select a student and add grades for that student!</small>
+            </h3>
+            <hr>
+            <div class="mb-3">
+                <label for="studentListLabel" class="form-label">Students</label>
+                <select class="form-control" name="studentList" id="studentList">
+                    <option disable selected value></option>
+                    <option value="1">Jalen Springer</option>
+                </select>
+            </div>
+            <table id="gradeTable" class="table table-bordered" style="display:none">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">Grade Row</th>
+                        <th scope="col">Grade Type</th>
+                        <th scope="col">Assignment Name</th>
+                        <th scope="col">Weight Percentage</th>
+                        <th scope="col">Grade Score</th>
+                        <th scope="col">Remove Row</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                        <input type="hidden" id="totalCount" name="totalCount"></input>
+                    </td>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" id="addButton" class="btn btn-outline-success" style="float: right; display:none;">Add New Grade</button>
+            </div>
+            <br><br>
+            <div>
+                <button type="submit" id="submitButton" class="btn btn-outline-info" style="width: 100%; display:none;"><strong>Submit Grades</strong></button>
+            </div>
+        </div>
+    </form>
+    <%- include("partials/footer")%>

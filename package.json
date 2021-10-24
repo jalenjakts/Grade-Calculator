@@ -1,0 +1,27 @@
+{
+    "name": "grade-calculator",
+    "version": "1.0.0",
+    "description": "KSU Students Grade Calculator App",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jalenjakts/Grade-Calculator.git"
+    },
+    "author": "Jalen Springer",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jalenjakts/Grade-Calculator/issues"
+    },
+    "homepage": "https://github.com/jalenjakts/Grade-Calculator#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "fontawesome-free": "^1.0.1",
+        "mysql": "^2.18.1"
+    }
+}

@@ -1,0 +1,39 @@
+<%- include("partials/header")%>
+    <div class="container-fluid" id="home-container">
+        <br>
+        <h3>
+            KSU Grade Calculator App
+            <small class="text-muted"> - calculate your grades for the semester! </small>
+        </h3>
+        <br>
+        <div class="btn-group btn-group-lg" role="group">
+            <a href="/newUser" class="btn btn-outline-info" role="button">New Student</a>
+            <a href="/addGrades" class="btn btn-outline-info" role="button">Add Grades</a>
+            <a href="/viewGrades" class="btn btn-outline-info" role="button">View Grades</a>
+            <a href="/viewDatabase" class="btn btn-outline-info" role="button">View Database</a>
+        </div>
+        <br><br>
+        <div class="card w-75" style="margin-left: auto; margin-right: auto;">
+            <div class="card-header">
+                <h5 class="card-title">-- How to Use Site --</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="card-title">New Student</h6>
+                <hr>
+                <p class="card-text">One must first go to this page to insert into the database a new student.</p>
+                <p> You will use this student in order to add grades for this student.</p>
+                <h6 class="card-title">Add Grades</h6>
+                <hr>
+                <p class="card-text">Use the drop down to select one of the students in order to add a grade for them.</p>
+                <p>You can add more grades for a student by clicking the add button for another row.</p>
+                <p>Once ready to submit the grades of the student. Click the Submit Grades button.</p>
+                <h6 class="card-title">View Grades</h6>
+                <hr>
+                <p class="card-title">Use the drop down to select one of the students to view the calculated average grade and the grade letter for the student.</p>
+                <h6 class="card-title">View Database</h6>
+                <hr>
+                <p class="card-title">Use the 'View Database Button' to get the contents of the tables within the database.</p>
+            </div>
+        </div>
+    </div>
+    <%- include("partials/footer")%>

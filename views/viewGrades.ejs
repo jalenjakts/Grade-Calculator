@@ -1,0 +1,16 @@
+<%- include("partials/header")%>
+    <div class="container">
+        <h3 style="text-align: center;">
+            View Grades
+            <small class="text-muted"> - Select a student and view details of the average grade!</small>
+        </h3>
+        <hr>
+        <div class="mb-3">
+            <label for="studentListLabel" class="form-label">Students</label>
+            <select class="form-control" name="studentList" id="studentList">
+                <option disable selected value></option>
+                <option value="1">Jalen Springer</option>
+            </select>
+        </div>
+    </div>
+    <%- include("partials/footer")%>
