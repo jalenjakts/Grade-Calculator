@@ -103,9 +103,6 @@ const create = async() => {
 const PORT = process.env.PORT || 3000;
 create().then(app => {
     app.listen(PORT, () => {
-        if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === "production") {
-            console.log(`Browse to ${uri}.`);
-        }
         console.log(`Server has started on port http://localhost:${PORT}`);
         console.log('Press Ctrl+C to quit.');
     });
