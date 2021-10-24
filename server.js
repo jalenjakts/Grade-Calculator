@@ -1,9 +1,10 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+//Required Packages
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database');
+
+//App Routing Configuration
 const create = async() => {
     const app = express();
     app.set("view engine", "ejs");
@@ -69,7 +70,7 @@ const create = async() => {
     //Post for submitting a new student
     app.post('/newUser', (req, res) => {
         const userDetails = req.body;
-        var sql = 'INSERT INTO ebdb.Student SET ?';
+        var sql = 'INSERT INTO Student SET ?';
         db.query(sql, userDetails, (err, data) => {
             if (err) {
                 throw err;
@@ -81,20 +82,6 @@ const create = async() => {
 
     //Post for New Grades
     app.post('/addGrades', (req, res) => {
-        for (var i = 1; i < req.body.totalCount; i++) {
-            // console.log(
-            //     "gradeType: " + req.body.gradeType + i + "\n" +
-            //     "gradeName: " + req.body.gradeName + i + "\n" +
-            //     "gradePercent: " + req.body.gradePercent + i + "\n" +
-            //     "gradeValue: " + req.body.gradeValue + i + "\n"
-            // );
-            console.log({
-                gradeType: req.body.gradeType1,
-                gradeName: req.body.gradeName1,
-                gradePercent: req.body.gradePercent1,
-                gradeValue: req.body.gradeValue1
-            });
-        }
         res.redirect('/');
     })
     return app;
