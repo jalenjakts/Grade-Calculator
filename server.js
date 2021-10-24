@@ -31,19 +31,31 @@ const create = async() => {
         }
     });
 
-    //Page for Viewing the Student Grades
-    app.get('/viewGrades', (req, res) => {
+    //Page for Adding new grades for Student
+    app.get('/addGrades', (req, res) => {
         try {
-            res.render("viewGrades");
+            var sql = 'SELECT firstName, lastName FROM Student';
+            db.query(sql, (err, data, fields) => {
+                if (err) {
+                    throw err;
+                }
+                res.render("addGrades", { title: 'Student List', studentData: data });
+            })
         } catch (err) {
             res.status(500).send('Unable to load page. Please fix the code').end();
         }
     });
 
-    //Page for Adding new grades for Student
-    app.get('/addGrades', (req, res) => {
+    //Page for Viewing the Student Grades
+    app.get('/viewGrades', (req, res) => {
         try {
-            res.render("addGrades");
+            var sql = 'SELECT * FROM Student';
+            db.query(sql, (err, data, fields) => {
+                if (err) {
+                    throw err;
+                }
+                res.render("viewGrades", { title: 'Student List', studentData: data });
+            })
         } catch (err) {
             res.status(500).send('Unable to load page. Please fix the code').end();
         }
