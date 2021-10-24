@@ -1,2 +1,7 @@
-cloud_sql_proxy.exe
+.elasticbeanstalk/
+.ebextensions
 /node_modules
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
