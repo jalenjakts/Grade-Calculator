@@ -1,9 +1,9 @@
-'use strict';
-
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-
+const db = require('./database');
 const create = async() => {
     const app = express();
     app.set("view engine", "ejs");
@@ -68,13 +68,14 @@ const create = async() => {
 
     //Post for submitting a new student
     app.post('/newUser', (req, res) => {
-        console.log({
-            student_id: req.body.studentID,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            school_year: req.body.year,
-            email: req.body.email
-        });
+        const userDetails = req.body;
+        var sql = 'INSERT INTO ebdb.Student SET ?';
+        db.query(sql, userDetails, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            console.log("User is successfully inserted to the db");
+        })
         res.redirect('/');
     });
 
