@@ -9,7 +9,15 @@
             <label for="studentListLabel" class="form-label">Students</label>
             <select class="form-control" name="studentList" id="studentList">
                 <option disable selected value></option>
-                <option value="1">Jalen Springer</option>
+                <% if(studentData.length !=0){
+                    var i = 1;
+                    studentData.forEach(function(data){
+                %>
+                <option><%=data.firstName + ' ' + data.lastName %></option>
+                <% }); %>
+                <% } else { %>
+                <option value="0"> No Data Found </option>
+                <% } %>
             </select>
         </div>
     </div>
