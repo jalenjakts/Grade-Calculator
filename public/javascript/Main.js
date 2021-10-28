@@ -6,7 +6,6 @@ function showTable() {
         $('#gradeTable').show();
         $('#addButton').show();
         $('#submitButton').show();
-        $('#addButton').click();
     })
 }
 
@@ -16,7 +15,7 @@ function addNewGrade() {
             `<tr class="text-center" id=${++rowIdx}>
             <th>${rowIdx}</th>
             <td>
-                <select class="form-control" name="gradeType${rowIdx}" id="gradeType${rowIdx}">
+                <select class="form-control" name="gradeType" id="gradeType${rowIdx}">
                     <option disable selected value></option>
                     <option value="Homework Assignment">Homework Assignment</option>
                     <option value="Quiz">Quiz</option>
@@ -25,13 +24,13 @@ function addNewGrade() {
                 </select>
             </td>
             <td>
-                <input type="text" class="form-control" id="gradeName${rowIdx}" name='gradeName${rowIdx}' placeholder="Assignment Name">
+                <input type="text" class="form-control" id="gradeName${rowIdx}" name='gradeName' placeholder="Assignment Name">
             </td>
             <td>
-                <input type="text" class="form-control" id="gradePercent${rowIdx}" name='gradePercent${rowIdx}' placeholder="Weight Percent">
+                <input type="text" class="form-control" id="gradePercent${rowIdx}" name='gradePercent' placeholder="Weight Percent">
             </td>
             <td>
-                <input type="text" class="form-control" id="gradeValue${rowIdx}" name='gradeValue${rowIdx}' placeholder="Grade Score">
+                <input type="text" class="form-control" id="gradeValue${rowIdx}" name='gradeValue' placeholder="Grade Score">
             </td>
             <td>
                 <button type="button" class="btn btn-outline-danger remove"><i class="fas fa-trash"></i></button>
