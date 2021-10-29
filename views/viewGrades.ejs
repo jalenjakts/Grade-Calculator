@@ -1,13 +1,14 @@
 <%- include("partials/header")%>
-    <div class="container">
-        <h3 style="text-align: center;">
-            View Grades
-            <small class="text-muted"> - Select a student and view details of the average grade!</small>
-        </h3>
-        <hr>
-        <div class="mb-3">
-            <label for="studentListLabel" class="form-label">Students</label>
-            <select class="form-control" name="studentList" id="studentList">
+    <form method='POST' action="/viewGrades">
+        <div class="container">
+            <h3 style="text-align: center;">
+                View Grades
+                <small class="text-muted"> - Select a student and view details of the average grade!</small>
+            </h3>
+            <hr>
+            <div class="mb-3">
+                <label for="studentListLabel" class="form-label">Students</label>
+                <select class="form-control" name="studentName" id="studentList">
                 <option disable selected value></option>
                 <% if(studentData.length !=0){
                     var i = 1;
@@ -19,6 +20,17 @@
                 <option value="0"> No Data Found </option>
                 <% } %>
             </select>
+            </div>
+            <div>
+                <button type="submit" id="submitButton" class="btn btn-outline-info" style="width: 100%; display:none;"><strong>Submit Grades</strong></button>
+            </div>
         </div>
-    </div>
+    </form>
+    <script>
+        $(document).ready(() => {
+            $('#studentList').change(() => {
+                $('#submitButton').show();
+            })
+        })
+    </script>
     <%- include("partials/footer")%>
