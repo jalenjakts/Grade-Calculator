@@ -1,11 +1,4 @@
 <%- include("partials/header")%>
-    <script>
-        $(document).ready(function() {
-            showTable();
-            addNewGrade();
-            removeButton();
-        })
-    </script>
     <form method="POST" action="/addGrades">
         <div class="container">
             <h3 style="text-align: center;">
@@ -54,4 +47,11 @@
             </div>
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+            showTable();
+            addNewGrade();
+            removeButton();
+        })
+    </script>
     <%- include("partials/footer")%>

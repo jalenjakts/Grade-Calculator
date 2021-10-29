@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database');
 const { LookoutEquipment } = require('aws-sdk');
+const scripts = require('./db-scripts/getMethods');
 
 //App Routing Configuration
 const create = async() => {
@@ -13,7 +14,6 @@ const create = async() => {
     app.set("view engine", "ejs");
     app.use(express.static('public'));
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(express.static("db-scripts"));
 
     //Index Page for App
     app.get('/', (req, res) => {
@@ -66,18 +66,17 @@ const create = async() => {
     //Page to view the tables of the Database
     app.get('/viewDatabase', (req, res) => {
         try {
-            const student = connection.query('SELECT * FROM Student', (err) => {
+            var sql = `SELECT * FROM Student s JOIN Grade g ON s.id = g.studentID JOIN Student_Grade sg ON s.id = sg.studentID `
+            db.query(sql, (err, data) => {
                 if (err) {
                     res.send({
                         "code": 400,
-                        "failed": "error occurred"
+                        "failed": err
                     });
-                    console.log(err);
                 } else {
-                    res.render("viewDataBase");
-                    res.send(student);
+                    res.json(data);
                 }
-            });
+            })
         } catch (err) {
             res.status(500).send('Unable to load page. Please fix the code').end();
         }
@@ -119,6 +118,25 @@ const create = async() => {
             }
         })
         res.redirect('/');
+    })
+
+    app.post('/viewGrades', (req, res) => {
+        var studentName = req.body.studentName;
+        scripts.getStudentNumber(studentName, (data, err) => {
+            if (err) {
+                console.log("Error: ", err);
+            } else {
+                var studentNumber = data;
+                var sql = `SELECT * FROM Student_Grade WHERE studentID = ${studentNumber}`;
+                db.query(sql, (err, data) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log(data);
+                    }
+                })
+            }
+        })
     })
     return app;
 }
